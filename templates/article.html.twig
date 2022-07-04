@@ -1,0 +1,11 @@
+{% include '_header.html.twig' %}
+    {% if list.isPublished %}
+        <article class="pageversion">
+           {% include '_article.html.twig' %}
+            <p>{{ list.description }}</p>
+            <img src="{{ list.image }}" alt="image">
+        </article>
+    {% else %}
+        <p>Cet article n'est pas encore publié</p>
+    {% endif %}
+{% include '_footer.html.twig' %}

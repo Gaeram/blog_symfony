@@ -1,0 +1,12 @@
+{% include '_header.html.twig' %}
+    {% for list in lists %}
+        {% if list.isPublished %}
+            <article class="homeversion">
+               {% include "_article.html.twig" %}
+                <a href="{{ path('article', {'id': list.id}) }}">Lire l'article</a>
+            </article>
+        {% else %}
+            <p>Cet article n'est pas encore publié</p>
+        {% endif %}
+    {% endfor %}
+{% include '_footer.html.twig' %}

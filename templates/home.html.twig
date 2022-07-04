@@ -1,0 +1,8 @@
+{% include '_header.html.twig' %}
+    {% for list in lists [:3] %}
+    <article class="homeversion">
+        {% include '_article.html.twig' %}
+        <a href="{{ path('article', {'id': list.id}) }}">Lire l'article</a>
+    </article>
+    {% endfor %}
+{% include '_footer.html.twig' %}
