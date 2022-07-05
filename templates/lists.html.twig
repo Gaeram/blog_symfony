@@ -1,4 +1,6 @@
-{% include '_header.html.twig' %}
+{% extends "base.html.twig" %}
+
+{% block main %}
     {% for list in lists %}
         {% if list.isPublished %}
             <article class="homeversion">
@@ -9,4 +11,4 @@
             <p>Cet article n'est pas encore publié</p>
         {% endif %}
     {% endfor %}
-{% include '_footer.html.twig' %}
+{% endblock %}
