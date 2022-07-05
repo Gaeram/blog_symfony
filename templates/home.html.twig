@@ -1,19 +1,19 @@
 {% extends "base.html.twig" %}
     {% block main %}
-    <form action="home.html.twig" method="get">
-        <label for="name">Nom</label>
-        <input type="text" name="name" id="name">
+        <form action="home.html.twig" method="get">
+            <label for="name">Nom</label>
+            <input type="text" name="name" id="name">
 
-        <label for="age">Age</label>
-        <input type="number" name="age" id="age">
+            <label for="age">Age</label>
+            <input type="number" name="age" id="age">
 
-        <button>soumettre</button>
-    </form>
+            <button>soumettre</button>
+        </form>
 
-    {% for list in lastArticles %}
-    <article class="homeversion">
-        {% include '_article.html.twig' %}
-        <a href="{{ path('article', {'id': list.id}) }}">Lire l'article</a>
-    </article>
-    {% endfor %}
-{% endblock %}
+        {% for list in lastArticles %}
+        <article class="homeversion">
+            {% include '_article.html.twig' %}
+            <a href="{{ path('article', {'id': list.id}) }}">Lire l'article</a>
+        </article>
+        {% endfor %}
+    {% endblock %}
