@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PageController extends AbstractController
 
 {
-    #[Route('/home', name: 'home')]
+    #[Route('/', name: 'home')]
     public function home(){
         $lists = [
             1 => [
@@ -52,8 +52,11 @@ class PageController extends AbstractController
             ],
         ];
 
+        //Using array_slice method for indexing my articles
+        $lastArticles = array_slice($lists, 1, 3);
+
         return $this->render('home.html.twig', [
-            'lists' => $lists
+            'lastArticles' => $lastArticles
         ]);
     }
 
@@ -154,6 +157,10 @@ class PageController extends AbstractController
         return $this->render('article.html.twig', [
             'list'=>$lists[$id]
         ]);
+    }
+
+    #[Route('/denied', name: 'denied')]
+    public function AccessDenied(){
     }
 
 }
