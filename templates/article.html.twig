@@ -1,4 +1,7 @@
 {% extends 'base.html.twig' %}
+    {% block title %}
+        <title>{{ list.title }}</title>
+    {% endblock %}
     {% block main %}
         {% if list.isPublished %}
             <article class="pageversion">
@@ -9,4 +12,7 @@
         {% else %}
             <p>Cet article n'est pas encore publié</p>
         {% endif %}
+    {% endblock %}
+    {% block footer %}
+        <p>Je suis le footer de la page article solo</p>
     {% endblock %}

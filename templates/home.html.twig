@@ -1,4 +1,9 @@
 {% extends "base.html.twig" %}
+
+    {% block title %}
+    <title>Accueil</title>
+    {% endblock %}
+
     {% block main %}
         <form action="home.html.twig" method="get">
             <label for="name">Nom</label>
@@ -17,3 +22,7 @@
         </article>
         {% endfor %}
     {% endblock %}
+
+     {% block footer %}
+         <p>Je suis le footer de la page d'acceuil</p>
+     {% endblock %}

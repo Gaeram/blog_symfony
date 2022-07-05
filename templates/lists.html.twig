@@ -1,5 +1,9 @@
 {% extends "base.html.twig" %}
 
+{%block title %}
+<title>Articles</title>
+{% endblock %}
+
 {% block main %}
     {% for list in lists %}
         {% if list.isPublished %}
@@ -12,3 +16,8 @@
         {% endif %}
     {% endfor %}
 {% endblock %}
+
+{% block footer %}
+    <p>Je suis le footer de la page des articles</p>
+{% endblock %}
+
