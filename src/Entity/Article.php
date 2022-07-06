@@ -28,6 +28,21 @@ class Article
      * @ORM\Column(type="string")
      */
     public $title;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    public $image;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    public $isPublished;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    public $author;
 }
 
 // creer le fichier de migration :
