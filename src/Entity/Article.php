@@ -92,6 +92,7 @@ class Article
 
         return $this;
     }
+
 }
 
 // creer le fichier de migration :
