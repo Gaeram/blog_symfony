@@ -9,7 +9,8 @@ class PageController extends AbstractController
 
 {
     #[Route('/', name: 'home')]
-    public function home(){
+    public function home()
+    {
         $lists = [
             1 => [
                 'title' => 'Non, là c\'est sale',
@@ -60,4 +61,4 @@ class PageController extends AbstractController
         ]);
     }
 
-
+}

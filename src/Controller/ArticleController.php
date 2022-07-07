@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -37,7 +38,22 @@ class ArticleController extends AbstractController
         die();
     }
 
-    /*    #[Route('/lists', name: 'lists')]
+
+    #[Route("show-article", name: "show-article")]
+    public function showArticle(ArticleRepository $articleRepository){
+        // Recuperer depuis la bdd un article en fonction de son ID
+        // SELECT $ FROM article where id  = xxx
+        $artcle = $articleRepository->find(1);
+        // La classe repository me permet de faire des SELECT
+        // Dans la table qui y est associée
+        // Cette methode permet la recuperation du element via son id
+        dd($artcle);
+    }
+
+
+
+
+    #[Route('/lists', name: 'lists')]
     public function lists(){
         $lists = [
             1 => [
@@ -134,6 +150,6 @@ class ArticleController extends AbstractController
         return $this->render('article.html.twig', [
             'list'=>$lists[$id]
         ]);
-    }*/
+    }
 
 }
