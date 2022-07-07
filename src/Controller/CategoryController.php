@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\ArticleCategory;
 use App\Repository\ArticleCategoryRepository;
-use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
