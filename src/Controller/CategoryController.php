@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\ArticleCategory;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -27,6 +28,13 @@ class CategoryController extends AbstractController
         dump($category);
         die();
 
+    }
+
+
+    #[Route("/show-category", name: "show-category")]
+    public function showCategory(CategoryRepository $categoryRepository){
+        $ctgry = $categoryRepository->find(1);
+        dd($ctgry)
     }
 
 }
