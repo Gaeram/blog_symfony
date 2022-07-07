@@ -6,7 +6,7 @@
         {% if article.isPublished %}
             <article class="pageversion">
                {% include '_article.html.twig' %}
-                {# <p>{{ article.description }}</p>  #}
+                <p>{{ article.content }}</p>
                 {# <img src="{{ article.image }}" alt="image"> #}
             </article>
         {% else %}
