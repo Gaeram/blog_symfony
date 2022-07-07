@@ -11,7 +11,7 @@ class PageController extends AbstractController
     #[Route('/', name: 'home')]
     public function home()
     {
-        $lists = [
+        $article = [
             1 => [
                 'title' => 'Non, là c\'est sale',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam amet assumenda deserunt eius eveniet molestias necessitatibus non, quos sed sequi! Animi aspernatur assumenda earum laudantium odio quasi quibusdam quisquam veniam.',
@@ -54,7 +54,7 @@ class PageController extends AbstractController
         ];
 
         //Using array_slice method for indexing my articles
-        $lastArticles = array_slice($lists, 1, 3);
+        $lastArticles = array_slice($article, 1, 3);
 
         return $this->render('home.html.twig', [
             'lastArticles' => $lastArticles

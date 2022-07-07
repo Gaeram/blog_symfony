@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
     {% block title %}
-        <title>{{ list.title }}</title>
+        <title>{{ article.title }}</title>
     {% endblock %}
     {% block main %}
-        {% if list.isPublished %}
+        {% if article.isPublished %}
             <article class="pageversion">
                {% include '_article.html.twig' %}
-                <p>{{ list.description }}</p>
-                <img src="{{ list.image }}" alt="image">
+                {# <p>{{ article.description }}</p>  #}
+                {# <img src="{{ article.image }}" alt="image"> #}
             </article>
         {% else %}
             <p>Cet article n'est pas encore publié</p>

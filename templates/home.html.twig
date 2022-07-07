@@ -15,10 +15,10 @@
             <button>soumettre</button>
         </form>
 
-        {% for list in lastArticles %}
+        {% for article in lastArticles %}
         <article class="homeversion">
             {% include '_article.html.twig' %}
-            <a href="{{ path('article', {'id': list.id}) }}">Lire l'article</a>
+            <a href="{{ path('article', {'id': article.id}) }}">Lire l'article</a>
         </article>
         {% endfor %}
     {% endblock %}

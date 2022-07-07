@@ -39,7 +39,7 @@ class ArticleController extends AbstractController
     }
 
 
-    #[Route("show-article", name: "show-article")]
+    #[Route("/articles", name: "articles")]
     public function showArticle(ArticleRepository $articleRepository){
         // Recuperer depuis la bdd un article en fonction de son ID
         // SELECT $ FROM article where id  = xxx
@@ -47,15 +47,25 @@ class ArticleController extends AbstractController
         // La classe repository me permet de faire des SELECT
         // Dans la table qui y est associée
         // Cette methode permet la recuperation du element via son id
-        dd($article);
+        return $this->render('lists.html.twig', [
+            "article"=>$article
+        ]);
+    }
+
+    #[Route('/article/{id}', name: 'article')]
+    public function article(ArticleRepository $articleRepository){
+        $article = $articleRepository->find(1);
+        return $this->render('article.html.twig',[
+            "article"=>$article
+        ]);
     }
 
 
 
-
-    #[Route('/lists', name: 'lists')]
-    public function lists(){
-        $lists = [
+/*
+    #[Route('/articles', name: 'articles')]
+    public function listArticle(){
+        $article = [
             1 => [
                 'title' => 'Non, là c\'est sale',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam amet assumenda deserunt eius eveniet molestias necessitatibus non, quos sed sequi! Animi aspernatur assumenda earum laudantium odio quasi quibusdam quisquam veniam.',
@@ -98,14 +108,14 @@ class ArticleController extends AbstractController
         ];
 
         return $this->render('lists.html.twig', [
-            'lists' => $lists
+            'article' => $article
         ]);
-    }
+    }*/
 
-    #[Route('/article/{id}', name: 'article')]
+/*    #[Route('/article/{id}', name: 'article')]
     public function article($id)
-    {
-        $lists = [
+    {*/
+       /* $article = [
             1 => [
                 'title' => 'Non, là c\'est sale',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam amet assumenda deserunt eius eveniet molestias necessitatibus non, quos sed sequi! Animi aspernatur assumenda earum laudantium odio quasi quibusdam quisquam veniam.',
@@ -145,11 +155,11 @@ class ArticleController extends AbstractController
                 'id' => 4
 
             ],
-        ];
+        ];*/
 
-        return $this->render('article.html.twig', [
-            'list'=>$lists[$id]
+ /*       return $this->render('article.html.twig', [
+            'article'=>$article[$id]
         ]);
-    }
+    }*/
 
 }
