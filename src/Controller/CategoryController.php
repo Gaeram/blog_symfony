@@ -34,7 +34,7 @@ class CategoryController extends AbstractController
 
     #[Route("/show-category", name: "show-category")]
     public function showCategory(ArticleCategoryRepository $articleCategoryRepository){
-        $category = $articleCategoryRepository->find(1);
+        $category = $articleCategoryRepository->findAll();
         dd($category);
     }
 
