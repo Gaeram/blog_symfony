@@ -14,7 +14,7 @@ class PageController extends AbstractController
     {
 
 
-        //Using array_slice method for indexing my articles
+        //Using instance to indexing articles 
         $lastArticles = $articleRepository->findBy([], ['id' => 'DESC'], 3);
 
         return $this->render('home.html.twig', [
