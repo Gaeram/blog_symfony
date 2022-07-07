@@ -43,11 +43,11 @@ class ArticleController extends AbstractController
     public function showArticle(ArticleRepository $articleRepository){
         // Recuperer depuis la bdd un article en fonction de son ID
         // SELECT $ FROM article where id  = xxx
-        $artcle = $articleRepository->find(1);
+        $article = $articleRepository->find(1);
         // La classe repository me permet de faire des SELECT
         // Dans la table qui y est associée
         // Cette methode permet la recuperation du element via son id
-        dd($artcle);
+        dd($article);
     }
 
 
