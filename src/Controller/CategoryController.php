@@ -31,10 +31,21 @@ class CategoryController extends AbstractController
     }
 
 
-    #[Route("/show-category", name: "show-category")]
-    public function showCategory(ArticleCategoryRepository $articleCategoryRepository){
+    #[Route("/categories", name: "categories")]
+    public function listCategory(ArticleCategoryRepository $articleCategoryRepository){
         $category = $articleCategoryRepository->findAll();
-        dd($category);
+        return $this->render('categories.html.twig', [
+            'categories' => $category
+        ]);
     }
+
+    #[Route("/categories/{id}", name: "category")]
+    public function showCategory($id, ArticleCategoryRepository $articleCategoryRepository){
+        $category = $articleCategoryRepository->find($id);
+        return $this->render('category.html.twig', [
+            'category' => $category
+        ]);
+    }
+
 
 }

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+    {% block title %}
+        <title>{{category.title}}</title>
+    {% endblock %}
+    {% block main %}
+            <article class="pageversion"style="background-color: {{ category.color }}" class="homeversion">
+                <h2>{{ category.title }}</h2>
+                <p>{{ category.description }}</p>
+            </article>
+    {% endblock %}
+    {% block footer %}
+        <p>Je suis le footer d'une catégorie</p>
+    {% endblock %}
