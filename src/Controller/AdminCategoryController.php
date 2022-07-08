@@ -49,7 +49,7 @@ class AdminCategoryController extends AbstractController
 
     // Crée une route pointant vers l'id de la catégorie permettant de supprimer le contenu selectionné
     // passant par l'entity manager et le repository comportant les caracteristiques des catégories
-    #[Route('/admin/categories/delete/{id}', name: 'admin-category-delete')]
+    #[Route("/admin/categories/delete/{id}", name: "admin-category-delete")]
     public function deleteCategory($id, ArticleCategoryRepository $articleCategoryRepository, EntityManagerInterface $entityManager){
         $category = $articleCategoryRepository->find($id);
 
@@ -65,7 +65,7 @@ class AdminCategoryController extends AbstractController
         }
     }
 
-    #[Route('/admin/categories/update/{id}', name: "admin-categorie-update")]
+    #[Route("/admin/categories/update/{id}", name: "admin-categorie-update")]
     public function updateCategory($id, ArticleCategoryRepository $articleCategoryRepository, EntityManagerInterface $entityManager){
         $category = $articleCategoryRepository->find($id);
 

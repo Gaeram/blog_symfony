@@ -53,7 +53,7 @@ class AdminArticleController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/article/{id}', name: 'admin-article')]
+    #[Route("/admin/article/{id}", name: "admin-article")]
     public function article($id, ArticleRepository $articleRepository){
         $article = $articleRepository->find($id);
         return $this->render('admin/article.html.twig',[
@@ -63,7 +63,7 @@ class AdminArticleController extends AbstractController
 
     // Crée une route pointant vers l'id de l4article permettant de supprimer le contenu selectionné
     // passant par l'entity manager et le repository comportant les caracteristiques des articles
-    #[Route('/admin/article/delete/{id}', name: 'admin-article-delete')]
+    #[Route("/admin/article/delete/{id}", name: "admin-article-delete")]
     public function deleteArticle($id, ArticleRepository $articleRepository, EntityManagerInterface $entityManager){
         $article = $articleRepository->find($id);
 
@@ -78,7 +78,7 @@ class AdminArticleController extends AbstractController
         }
     }
 
-    #[Route('/admin/article/update/{id}', name: "admin-article-update")]
+    #[Route("/admin/article/update/{id}", name: "admin-article-update")]
     public function updateArticle($id, ArticleRepository $articleRepository, EntityManagerInterface $entityManager){
        $article = $articleRepository->find($id);
 
