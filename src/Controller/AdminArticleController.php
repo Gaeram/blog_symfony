@@ -36,6 +36,8 @@ class AdminArticleController extends AbstractController
         $entityManager->persist($article);
         $entityManager->flush();
 
+        $this->addFlash('success', 'Votre article à bien été ajouté !');
+
         return $this->redirectToRoute('admin-articles');
     }
 
@@ -72,10 +74,15 @@ class AdminArticleController extends AbstractController
             $entityManager->remove($article);
             $entityManager->flush();
             // Le redirect to route permet de rediriger vers la page précédent la suppression
-            return $this->redirectToRoute('admin-articles');
+            // Le Addflash permet d'afficher un message avertissant si l'opération à
+            // été menée à bien ou non
+            $this->addFlash('success', 'Votre article à bien été supprimé !');
         } else {
-            return new Response("Déja supprimé");
+            $this->addFlash('error', 'Article introuvable !');
         }
+
+        return $this->redirectToRoute('admin-articles');
+
     }
 
     #[Route("/admin/article/update/{id}", name: "admin-article-update")]

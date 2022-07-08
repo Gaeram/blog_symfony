@@ -26,6 +26,8 @@ class AdminCategoryController extends AbstractController
         $entityManager->persist($category);
         $entityManager->flush();
 
+        $this->addFlash('success', 'votre catégorie à bien été ajoutée ');
+
         return $this->redirectToRoute('admin-categories');
 
     }
@@ -58,11 +60,13 @@ class AdminCategoryController extends AbstractController
             $entityManager->remove($category);
             $entityManager->flush();
 
-            // Le redirect to route permet de rediriger vers la page précédent la suppression
-            return $this->redirectToRoute('admin-categories');
+            // addflash affichant le succes ou non de la procédure 
+            $this->addFlash('success', 'Votre catégorie à bien été supprimée !');
         } else {
-            return new Response("Déja supprimée");
+            $this->addFlash('error', 'Catégorie introuvable !');
         }
+        return $this->redirectToRoute('admin-categories');
+
     }
 
     #[Route("/admin/categories/update/{id}", name: "admin-categorie-update")]
