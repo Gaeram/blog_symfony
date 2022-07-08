@@ -62,5 +62,17 @@ class CategoryController extends AbstractController
         }
     }
 
+    #[Route('/categories/update/{id}', name: "categorie-update")]
+    public function updateCategory($id, ArticleCategoryRepository $articleCategoryRepository, EntityManagerInterface $entityManager){
+        $category = $articleCategoryRepository->find($id);
+
+        $category->setTitle("Nouveau titre");
+
+        $entityManager->persist($category);
+        $entityManager->flush();
+
+        return new Response("Élement mis à jour");
+    }
+
 
 }
