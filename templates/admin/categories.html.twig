@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends '/base.html.twig' %}
     {% block title %}
         <title>Catégories</title>
     {% endblock %}
@@ -6,7 +6,7 @@
         {% for category in category %}
             <article style="background-color: {{ category.color }}" class="homeversion">
                 <h2>{{ category.title }}</h2>
-                <a href="{{ path('category', {'id': category.id}) }}">Clique ici </a>
+                <a href="{{ path('admin-category', {'id': category.id}) }}">Clique ici </a>
             </article>
         {% endfor %}
     {% endblock %}

@@ -1,11 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends '/base.html.twig' %}
     {% block title %}
         <title>{{ article.title }}</title>
     {% endblock %}
     {% block main %}
         {% if article.isPublished %}
             <article class="pageversion">
-               {% include '_article.html.twig' %}
+               {% include 'admin/_article.html.twig' %}
                 <p>{{ article.content }}</p>
                 {# <img src="{{ article.image }}" alt="image"> #}
             </article>

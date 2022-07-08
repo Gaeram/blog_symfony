@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use function PHPUnit\Framework\isNull;
 
 
-class ArticleController extends AbstractController
+class AdminArticleController extends AbstractController
 {
     #[Route("/admin/insert-article", name: "admin-insert-article")]
     public function insertArticle(EntityManagerInterface $entityManager){
@@ -49,7 +49,7 @@ class ArticleController extends AbstractController
         // La classe repository me permet de faire des SELECT
         // Dans la table qui y est associée
         // Cette methode permet la recuperation du element via son id
-        return $this->render('lists.html.twig', [
+        return $this->render('admin/lists.html.twig', [
             "article"=>$article
         ]);
     }
@@ -57,7 +57,7 @@ class ArticleController extends AbstractController
     #[Route('/admin/article/{id}', name: 'admin-article')]
     public function article($id, ArticleRepository $articleRepository){
         $article = $articleRepository->find($id);
-        return $this->render('article.html.twig',[
+        return $this->render('admin/article.html.twig',[
             "article"=>$article
         ]);
     }

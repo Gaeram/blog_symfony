@@ -9,9 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 
-class CategoryController extends AbstractController
+class AdminCategoryController extends AbstractController
 {
-    #[Route("/insert-category", name: "insert-category")]
+    #[Route("/admin/insert-category", name: "admin-insert-category")]
     public function insertCategory(EntityManagerInterface $entityManager){
 
         // Appel de l'instance ArticleCategory dans une variable
@@ -32,23 +32,23 @@ class CategoryController extends AbstractController
     }
 
 
-    #[Route("/categories", name: "categories")]
+    #[Route("/admin/categories", name: "admin-categories")]
     public function listCategory(ArticleCategoryRepository $articleCategoryRepository){
         $category = $articleCategoryRepository->findAll();
-        return $this->render('categories.html.twig', [
+        return $this->render('admin/categories.html.twig', [
             'category' => $category
         ]);
     }
 
-    #[Route("/categories/{id}", name: "category")]
+    #[Route("/admin/categories/{id}", name: "admin-category")]
     public function showCategory($id, ArticleCategoryRepository $articleCategoryRepository){
         $category = $articleCategoryRepository->find($id);
-        return $this->render('category.html.twig', [
+        return $this->render('admin/category.html.twig', [
             'category' => $category
         ]);
     }
 
-    #[Route('/categories/delete/{id}', name: 'category-delete')]
+    #[Route('/admin/categories/delete/{id}', name: 'admin-category-delete')]
     public function deleteCategory($id, ArticleCategoryRepository $articleCategoryRepository, EntityManagerInterface $entityManager){
         $category = $articleCategoryRepository->find($id);
 
@@ -62,7 +62,7 @@ class CategoryController extends AbstractController
         }
     }
 
-    #[Route('/categories/update/{id}', name: "categorie-update")]
+    #[Route('/admin/categories/update/{id}', name: "admin-categorie-update")]
     public function updateCategory($id, ArticleCategoryRepository $articleCategoryRepository, EntityManagerInterface $entityManager){
         $category = $articleCategoryRepository->find($id);
 

@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{% extends "/base.html.twig" %}
 
 {%block title %}
 <title>Articles</title>
@@ -8,7 +8,7 @@
     {% for article in article %}
         {% if article.isPublished %}
             <article class="homeversion">
-               {% include "_article.html.twig" %}
+               {% include "admin/_article.html.twig" %}
                 <a href="{{ path('admin-article', {'id': article.id}) }}">Lire l'article</a>
             </article>
         {% else %}
