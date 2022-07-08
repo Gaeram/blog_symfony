@@ -36,8 +36,7 @@ class AdminArticleController extends AbstractController
         $entityManager->persist($article);
         $entityManager->flush();
 
-        dump($article);
-        die();
+        return $this->redirectToRoute('admin-articles');
     }
 
 
@@ -62,14 +61,17 @@ class AdminArticleController extends AbstractController
         ]);
     }
 
+    // Crée une route pointant vers l'id de l4article permettant de supprimer le contenu selectionné
+    // passant par l'entity manager et le repository comportant les caracteristiques des articles
     #[Route('/admin/article/delete/{id}', name: 'admin-article-delete')]
     public function deleteArticle($id, ArticleRepository $articleRepository, EntityManagerInterface $entityManager){
         $article = $articleRepository->find($id);
 
         if(!is_null($article)){
+            // La fonctionnalité remove efface l'élément selectionné
             $entityManager->remove($article);
             $entityManager->flush();
-
+            // Le redirect to route permet de rediriger vers la page précédent la suppression
             return $this->redirectToRoute('admin-articles');
         } else {
             return new Response("Déja supprimé");

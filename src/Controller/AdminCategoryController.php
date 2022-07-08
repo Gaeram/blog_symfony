@@ -18,7 +18,7 @@ class AdminCategoryController extends AbstractController
         $category = new ArticleCategory();
         // Utilisation des setters afin de définir nos données
         $category->setTitle("Animaux");
-        $category->setColor("Blue");
+        $category->setColor("White");
         $category->setDescription("Regroupe les articles sur le theme animalier");
         $category->setIsPublished(true);
         // Utilisation de ces deux fonctions appartenant à EntityManagerInterface
@@ -26,8 +26,7 @@ class AdminCategoryController extends AbstractController
         $entityManager->persist($category);
         $entityManager->flush();
 
-        dump($category);
-        die();
+        return $this->redirectToRoute('admin-articles');
 
     }
 
@@ -48,14 +47,18 @@ class AdminCategoryController extends AbstractController
         ]);
     }
 
+    // Crée une route pointant vers l'id de la catégorie permettant de supprimer le contenu selectionné
+    // passant par l'entity manager et le repository comportant les caracteristiques des catégories
     #[Route('/admin/categories/delete/{id}', name: 'admin-category-delete')]
     public function deleteCategory($id, ArticleCategoryRepository $articleCategoryRepository, EntityManagerInterface $entityManager){
         $category = $articleCategoryRepository->find($id);
 
         if(!is_null($category)){
+            // La fonctionnalité remove efface l'élément selectionné
             $entityManager->remove($category);
             $entityManager->flush();
 
+            // Le redirect to route permet de rediriger vers la page précédent la suppression
             return $this->redirectToRoute('admin-categories');
         } else {
             return new Response("Déja supprimée");

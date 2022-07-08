@@ -3,6 +3,7 @@
         <title>Catégories</title>
     {% endblock %}
     {% block main %}
+        <a href="{{ path('admin-insert-category') }}">Ajouter une catégorie</a>
         {% for category in category %}
             <article style="background-color: {{ category.color }}" class="homeversion">
                 <h2>{{ category.title }}</h2>
