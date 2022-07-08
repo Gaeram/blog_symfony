@@ -56,7 +56,7 @@ class AdminCategoryController extends AbstractController
             $entityManager->remove($category);
             $entityManager->flush();
 
-            return $this->redirectToRoute('admin-category');
+            return $this->redirectToRoute('admin-categories');
         } else {
             return new Response("Déja supprimée");
         }
@@ -71,7 +71,7 @@ class AdminCategoryController extends AbstractController
         $entityManager->persist($category);
         $entityManager->flush();
 
-        return $this->redirectToRoute('admin-category');
+        return $this->redirectToRoute('admin-categories');
     }
 
 
