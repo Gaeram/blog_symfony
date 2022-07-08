@@ -74,8 +74,18 @@ class ArticleController extends AbstractController
         } else {
             return new Response("Déja supprimé");
         }
+    }
 
+    #[Route('/article/update/{id}', name: "article-update")]
+    public function updateArticle($id, ArticleRepository $articleRepository, EntityManagerInterface $entityManager){
+       $article = $articleRepository->find($id);
 
+       $article->setTitle("Nouveau titre");
+
+       $entityManager->persist($article);
+       $entityManager->flush();
+
+       return new Response("Élement mis à jour");
     }
 
 }
