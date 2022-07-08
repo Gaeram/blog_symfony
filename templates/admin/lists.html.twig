@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block main %}
-    <a href="{{ path('admin-insert-article') }}">Ajouter un article</a>
+    <a class="bouton" href="{{ path('admin-insert-article') }}">Ajouter un article</a>
     {% for article in article %}
         {% if article.isPublished %}
             <article class="homeversion">

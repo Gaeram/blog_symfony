@@ -85,6 +85,24 @@ button {
     width: 10vh
 }
 
+.bouton{
+    display: inline-block;
+    font-family: "Arial Black";
+    text-decoration: none;
+    border: solid 1px navy;
+    border-radius: 3px;
+    background-color: white;
+    color: blue;
+    padding: 10px;
+    margin-left: 87vh;
+    margin-top: 5vh;
+}
+
+.bouton:hover {
+    background-color: blue;
+    color: white;
+}
+
 footer {
     text-align: center;
 }

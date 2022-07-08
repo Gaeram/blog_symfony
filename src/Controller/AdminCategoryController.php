@@ -26,7 +26,7 @@ class AdminCategoryController extends AbstractController
         $entityManager->persist($category);
         $entityManager->flush();
 
-        return $this->redirectToRoute('admin-articles');
+        return $this->redirectToRoute('admin-categories');
 
     }
 
