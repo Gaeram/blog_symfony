@@ -13,7 +13,7 @@ use function PHPUnit\Framework\isNull;
 
 class ArticleController extends AbstractController
 {
-    #[Route("/insert-article", name: "insert-article")]
+    #[Route("/admin/insert-article", name: "admin-insert-article")]
     public function insertArticle(EntityManagerInterface $entityManager){
 
         //Création d'une instance de classe pour les articles(Classe entité)
@@ -41,7 +41,7 @@ class ArticleController extends AbstractController
     }
 
 
-    #[Route("/articles", name: "articles")]
+    #[Route("/admin/articles", name: "admin-articles")]
     public function showArticle(ArticleRepository $articleRepository){
         // Recuperer depuis la bdd un article en fonction de son ID
         // SELECT $ FROM article where id  = xxx
@@ -54,15 +54,15 @@ class ArticleController extends AbstractController
         ]);
     }
 
-    #[Route('/article/{id}', name: 'article')]
-    public function article(ArticleRepository $articleRepository){
-        $article = $articleRepository->find(1);
+    #[Route('/admin/article/{id}', name: 'admin-article')]
+    public function article($id, ArticleRepository $articleRepository){
+        $article = $articleRepository->find($id);
         return $this->render('article.html.twig',[
             "article"=>$article
         ]);
     }
 
-    #[Route('/article/delete/{id}', name: 'article-delete')]
+    #[Route('/admin/article/delete/{id}', name: 'admin-article-delete')]
     public function deleteArticle($id, ArticleRepository $articleRepository, EntityManagerInterface $entityManager){
         $article = $articleRepository->find($id);
 
@@ -76,7 +76,7 @@ class ArticleController extends AbstractController
         }
     }
 
-    #[Route('/article/update/{id}', name: "article-update")]
+    #[Route('/admin/article/update/{id}', name: "admin-article-update")]
     public function updateArticle($id, ArticleRepository $articleRepository, EntityManagerInterface $entityManager){
        $article = $articleRepository->find($id);
 
