@@ -70,7 +70,7 @@ class AdminArticleController extends AbstractController
             $entityManager->remove($article);
             $entityManager->flush();
 
-            return new Response("Article supprimé");
+            return $this->redirectToRoute('admin-article');
         } else {
             return new Response("Déja supprimé");
         }
@@ -85,7 +85,7 @@ class AdminArticleController extends AbstractController
        $entityManager->persist($article);
        $entityManager->flush();
 
-       return new Response("Élement mis à jour");
+       return $this->redirectToRoute('admin-article');
     }
 
 }
