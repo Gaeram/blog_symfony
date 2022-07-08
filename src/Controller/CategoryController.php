@@ -7,6 +7,7 @@ use App\Repository\ArticleCategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 class CategoryController extends AbstractController
 {
@@ -35,7 +36,7 @@ class CategoryController extends AbstractController
     public function listCategory(ArticleCategoryRepository $articleCategoryRepository){
         $category = $articleCategoryRepository->findAll();
         return $this->render('categories.html.twig', [
-            'categories' => $category
+            'category' => $category
         ]);
     }
 
@@ -45,6 +46,20 @@ class CategoryController extends AbstractController
         return $this->render('category.html.twig', [
             'category' => $category
         ]);
+    }
+
+    #[Route('/categories/delete/{id}', name: 'category-delete')]
+    public function deleteCategory($id, ArticleCategoryRepository $articleCategoryRepository, EntityManagerInterface $entityManager){
+        $category = $articleCategoryRepository->find($id);
+
+        if(!is_null($category)){
+            $entityManager->remove($category);
+            $entityManager->flush();
+
+            return new Response("Catégorie supprimée");
+        } else {
+            return new Response("Déja supprimée");
+        }
     }
 
 
