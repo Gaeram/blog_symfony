@@ -15,6 +15,33 @@ class AdminArticleController extends AbstractController
 {
     #[Route("/admin/insert-article", name: "admin-insert-article")]
     public function insertArticle(EntityManagerInterface $entityManager, Request $request){
+        // Création d'un nouveau patron de formulaire avec bin/console make:form
+        // Création du Type en le renomant par le nom de l'entité + type
+        $article = new Article();
+        // Création du formulaire en recuperant l'instance
+        $form = $this->createForm(ArticleType::class, $article);
+        //Renvoi du formulaire sur la page en twig via le biais de la fonction form
+
+        // on donne à la variable qui contient le form
+        // une instance de la classe request
+        // pour que le form puisse récuperer toutes les données
+        // des inputs et faire les setter automatiquement sur $category
+        $form->handleRequest($request);
+
+        //ici on note que si le contenu du formulaire est envoyé et est conforme
+        // à ce qui est attendu en BDD, il sera pris en compte
+        if($form->isSubmitted() && $form->isValid()){
+            $entityManager->persist($article);
+            $entityManager->flush();
+        }
+
+        return $this->render('admin/form_article.html.twig', [
+            'form' => $form->createView()
+        ]);
+
+        return $this->render('admin/form_article.html.twig', [
+            'form' => $form->createView()
+        ]);
 
         /*$title = $request->query->get('title');
         $content = $request->query->get('content');
@@ -27,14 +54,7 @@ class AdminArticleController extends AbstractController
             //Création d'une instance de classe pour les articles(Classe entité)
             //Celle si servira à inclure mon nouvel article dans la base de données
 
-            $article = new Article();
 
-            $form = $this->createForm(ArticleType::class, $article);
-
-
-            return $this->render('admin/form_article.html.twig', [
-               'form' => $form->createView()
-            ]);
             // Ici j'utilise mes setters afin de d'attribuer mes données
             // voulues pour le titre, le contenu etc..
             /*$article->setTitle($title);
