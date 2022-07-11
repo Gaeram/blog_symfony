@@ -12,6 +12,7 @@
                {% include "admin/_article.html.twig" %}
                 <a href="{{ path('admin-article', {'id': article.id}) }}">Lire l'article</a>
                 <a href="{{ path('admin-article-delete', {'id': article.id}) }}">Supprimer</a>
+                <a href="{{ path('admin-article-update', {'id': article.id}) }}">Modifier</a>
             </article>
         {% else %}
             <p>Cet article n'est pas encore publié</p>
