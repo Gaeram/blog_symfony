@@ -1,7 +1,7 @@
 {% extends '/base.html.twig' %}
 
 {% block main %}
-    <form action="{{ path('admin-insert-category') }}" method="get">
+  {#  <form action="{{ path('admin-insert-category') }}" method="get">
         <label for="title">Titre</label>
         <input type="text" name="title">
 
@@ -13,7 +13,9 @@
 
         <label for="submit">Envoyer</label>
         <input type="submit">
-    </form>
+    </form>#}
+
+    {{ form(form) }}
 {% endblock %}
 {% block footer %}
     <p>je suis le footer de la page de création de catégories</p>

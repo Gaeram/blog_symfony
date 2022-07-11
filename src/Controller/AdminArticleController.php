@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,22 +16,27 @@ class AdminArticleController extends AbstractController
     #[Route("/admin/insert-article", name: "admin-insert-article")]
     public function insertArticle(EntityManagerInterface $entityManager, Request $request){
 
-        $title = $request->query->get('title');
+        /*$title = $request->query->get('title');
         $content = $request->query->get('content');
         $author = $request->query->get('author');
 
         if(!empty($title) &&
             !empty($content) &&
             !empty($author)
-        ){
+        ){*/
             //Création d'une instance de classe pour les articles(Classe entité)
             //Celle si servira à inclure mon nouvel article dans la base de données
 
             $article = new Article();
 
+            $form = $this->createForm(ArticleType::class, $article);
+
+            return $this->render('admin/form_article.html.twig', [
+               'form' => $form->createView()
+            ]);
             // Ici j'utilise mes setters afin de d'attribuer mes données
             // voulues pour le titre, le contenu etc..
-            $article->setTitle($title);
+            /*$article->setTitle($title);
             $article->setContent($content);
             $article->setIsPublished(true);
             $article->setAuthor($author);
@@ -49,7 +55,7 @@ class AdminArticleController extends AbstractController
         } else {
             $this->addFlash('error','Article non ajouté !');
         }
-        return $this->render('admin/form_article.html.twig');
+        return $this->render('admin/form_article.html.twig');*/
     }
 
 
