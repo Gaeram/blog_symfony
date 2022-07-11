@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\ArticleCategory;
-use App\Form\ArticleType;
 use App\Form\CategoryType;
 use App\Repository\ArticleCategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -21,6 +20,20 @@ class AdminCategoryController extends AbstractController
         // Création du formulaire en recuperant l'instance
         $form = $this->createForm(CategoryType::class, $category);
         //Renvoi du formulaire sur la page en twig via le biais de la fonction form.
+
+        // on donne à la variable qui contient le form
+        // une instance de la classe request
+        // pour que le form puisse récuperer toutes les données
+        // des inputs et faire les setter automatiquement sur $category
+        $form->handleRequest($request);
+
+        //ici on note que si le contenu du formulaire est envoyé et est conforme
+        // à ce qui est attendu en BDD, il sera pris en compte
+        if($form->isSubmitted() && $form->isValid()){
+            $entityManager->persist($category);
+            $entityManager->flush();
+        }
+
         return $this->render('admin/form_category.html.twig', [
             'form' => $form->createView()
         ]);
