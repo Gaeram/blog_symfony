@@ -5,41 +5,53 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use function PHPUnit\Framework\isNull;
 
 
 class AdminArticleController extends AbstractController
 {
     #[Route("/admin/insert-article", name: "admin-insert-article")]
-    public function insertArticle(EntityManagerInterface $entityManager){
+    public function insertArticle(EntityManagerInterface $entityManager, Request $request){
 
-        //Création d'une instance de classe pour les articles(Classe entité)
-        //Celle si servira à inclure mon nouvel article dans la base de données
+        $title = $request->query->get('title');
+        $content = $request->query->get('content');
+        $author = $request->query->get('author');
 
-        $article = new Article();
+        if(!empty($title) &&
+            !empty($content) &&
+            !empty($author)
+        ){
+            //Création d'une instance de classe pour les articles(Classe entité)
+            //Celle si servira à inclure mon nouvel article dans la base de données
 
-        // Ici j'utilise mes setters afin de d'attribuer mes données
-        // voulues pour le titre, le contenu etc..
-        $article->setTitle("Chat mignon");
-        $article->setContent("ouuuh qu'il est troumignoninou ce petit chat. Et si je lui roulais dessus avec mon SUV");
-        $article->setIsPublished(true);
-        $article->setAuthor("Moi même");
+            $article = new Article();
+
+            // Ici j'utilise mes setters afin de d'attribuer mes données
+            // voulues pour le titre, le contenu etc..
+            $article->setTitle($title);
+            $article->setContent($content);
+            $article->setIsPublished(true);
+            $article->setAuthor($author);
 
 
-        // La classe entityManagerInterface de doctrine me permets
-        // d'enregisterer mon entité dans la bdd dans la table article.
-        // en deux étapes avec les fonctions persist & flush.
+            // La classe entityManagerInterface de doctrine me permets
+            // d'enregisterer mon entité dans la bdd dans la table article.
+            // en deux étapes avec les fonctions persist & flush.
 
-        $entityManager->persist($article);
-        $entityManager->flush();
+            $entityManager->persist($article);
+            $entityManager->flush();
 
-        $this->addFlash('success', 'Votre article à bien été ajouté !');
+            $this->addFlash('success', 'Votre article à bien été ajouté !');
 
-        return $this->redirectToRoute('admin-articles');
+            return $this->redirectToRoute('admin-articles');
+        } else {
+            $this->addFlash('error','Article non ajouté !');
+        }
+        return $this->render('admin/form_article.html.twig');
     }
+
 
 
     #[Route("/admin/articles", name: "admin-articles")]

@@ -19,9 +19,9 @@ class AdminCategoryController extends AbstractController
         if(!empty($title) &&
             !empty($description)&&
             !empty($color)
-        ){
+        ) {
 
-            // Appel de l'instance ArticleCategory dans une variable
+            // Récupère l'instance ArticleCategory dans une variable
             $category = new ArticleCategory();
             // Utilisation des setters afin de définir nos données
             $category->setTitle($title);
