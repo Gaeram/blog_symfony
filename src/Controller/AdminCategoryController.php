@@ -5,31 +5,41 @@ namespace App\Controller;
 use App\Entity\ArticleCategory;
 use App\Repository\ArticleCategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Response;
 
 class AdminCategoryController extends AbstractController
 {
     #[Route("/admin/insert-category", name: "admin-insert-category")]
-    public function insertCategory(EntityManagerInterface $entityManager){
+    public function insertCategory(EntityManagerInterface $entityManager, Request $request){
+        $title = $request->query->get('title');
+        $description = $request->query->get('description');
+        $color = $request->query->get('color');
+        if(!empty($title) &&
+            !empty($description)&&
+            !empty($color)
+        ){
 
-        // Appel de l'instance ArticleCategory dans une variable
-        $category = new ArticleCategory();
-        // Utilisation des setters afin de définir nos données
-        $category->setTitle("Animaux");
-        $category->setColor("White");
-        $category->setDescription("Regroupe les articles sur le theme animalier");
-        $category->setIsPublished(true);
-        // Utilisation de ces deux fonctions appartenant à EntityManagerInterface
-        // Pour les enregistrer dans la table dédié dans la bdd
-        $entityManager->persist($category);
-        $entityManager->flush();
+            // Appel de l'instance ArticleCategory dans une variable
+            $category = new ArticleCategory();
+            // Utilisation des setters afin de définir nos données
+            $category->setTitle($title);
+            $category->setDescription($description);
+            $category->setColor($color);
+            $category->setIsPublished(true);
+            // Utilisation de ces deux fonctions appartenant à EntityManagerInterface
+            // Pour les enregistrer dans la table dédié dans la bdd
+            $entityManager->persist($category);
+            $entityManager->flush();
 
-        $this->addFlash('success', 'votre catégorie à bien été ajoutée ');
+            $this->addFlash('success', 'votre catégorie à bien été ajoutée ');
 
-        return $this->redirectToRoute('admin-categories');
-
+            return $this->redirectToRoute('admin-categories');
+        } else {
+            $this->addFlash('error', 'Merci de remplir le titre et le contenu !');
+        }
+        return $this->render('admin/form_category.html.twig');
     }
 
 
@@ -60,7 +70,7 @@ class AdminCategoryController extends AbstractController
             $entityManager->remove($category);
             $entityManager->flush();
 
-            // addflash affichant le succes ou non de la procédure 
+            // addflash affichant le succes ou non de la procédure
             $this->addFlash('success', 'Votre catégorie à bien été supprimée !');
         } else {
             $this->addFlash('error', 'Catégorie introuvable !');
