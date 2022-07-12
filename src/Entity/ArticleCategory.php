@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Repository\AdminArticleCategoryRepository;
+use App\Repository\ArticleCategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
