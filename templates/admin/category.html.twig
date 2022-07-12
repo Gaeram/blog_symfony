@@ -5,8 +5,8 @@
     {% block main %}
             <article class="pageversion"style="background-color: {{ category.color }}" class="homeversion">
                 {% for article in category.articles %}
-                    <h2>{{ category.title }}</h2>
-                    <p>{{ category.description }}</p>
+                    <h2>{{ article.title }}</h2>
+                    <p>{{ article.content }}</p>
                 {% endfor %}
             </article>
     {% endblock %}
