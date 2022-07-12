@@ -39,9 +39,7 @@ class AdminArticleController extends AbstractController
             'form' => $form->createView()
         ]);
 
-        return $this->render('admin/form_article.html.twig', [
-            'form' => $form->createView()
-        ]);
+
 
         /*$title = $request->query->get('title');
         $content = $request->query->get('content');
