@@ -40,10 +40,36 @@ class Article
      */
     private $content;
 
-    public function getId(): ?int
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\ArticleCategory")
+     */
+
+    private $category;
+
+    public function getId (): ?int
     {
         return $this->id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param mixed $category
+     */
+    public function setCategory($category): void
+    {
+        $this->category = $category;
+    }
+
+
+
 
     public function getTitle(): ?string
     {
