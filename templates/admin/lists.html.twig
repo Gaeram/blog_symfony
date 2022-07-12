@@ -15,7 +15,7 @@
                     {% else %}
                     <p>Pas de catégorie</p>
                 {% endif %}
-               {% include "admin/_article.html.twig" %}
+                {% include "admin/_article.html.twig" %}
                 <a href="{{ path('admin-article', {'id': article.id}) }}">Lire l'article</a>
                 <a href="{{ path('admin-article-delete', {'id': article.id}) }}">Supprimer</a>
                 <a href="{{ path('admin-article-update', {'id': article.id}) }}">Modifier</a>
