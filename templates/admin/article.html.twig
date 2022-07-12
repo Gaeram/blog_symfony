@@ -5,9 +5,9 @@
     {% block main %}
         {% if article.isPublished %}
             <article class="pageversion">
-               {% include 'admin/_article.html.twig' %}
-                <p>{{ article.content }}</p>
-                {# <img src="{{ article.image }}" alt="image"> #}
+                    {% include 'admin/_article.html.twig' %}
+                    <p>{{ article.content }}</p>
+                    {# <img src="{{ article.image }}" alt="image"> #}
             </article>
         {% else %}
             <p>Cet article n'est pas encore publié</p>
