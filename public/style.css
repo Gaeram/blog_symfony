@@ -98,6 +98,10 @@ button {
     margin-top: 5vh;
 }
 
+.form-group {
+    width: 80vw;
+}
+
 .bouton:hover {
     background-color: blue;
     color: white;
@@ -105,4 +109,5 @@ button {
 
 footer {
     text-align: center;
+    margin-bottom: 0;
 }
