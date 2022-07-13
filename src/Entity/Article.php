@@ -40,7 +40,8 @@ class Article
      */
     private $content;
 
-
+    // La relation ManyToOne Créée une clé étrangère permettant de lier
+    // articles & catégories correspondantes
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\ArticleCategory")
      */

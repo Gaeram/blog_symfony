@@ -38,9 +38,15 @@ class ArticleCategory
      */
     private $isPublished;
 
+    // Création d'une relation OneToMany que va permettre de lier
+    // Une catégorie à plusieurs articles
+    // L'entité visée est Article.php là ou les propriété des articles sont
+    // définies & stockées en BDD
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="category")
      */
+    // Créer un tableau vide qui va permettre de stocker les articles en fonction de
+    // la catégorie que l'on à assigné
     private $articles;
 
     public function __construct(){
