@@ -10,6 +10,10 @@
         <title>Blog de la Piscine</title>
     {% endblock %}
     <header>
+        <form method="get" action="{{ path('admin-articles-search') }}">
+            <input type="text" name="search">
+            <input type="submit">
+        </form>
         <nav>
             <ul>
                 <li><a href="{{ path('home') }}">Accueil</a></li>

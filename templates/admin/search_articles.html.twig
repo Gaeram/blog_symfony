@@ -1,0 +1,13 @@
+{% extends '/base.html.twig' %}
+
+{% block main %}
+    {% for article in articles %}
+        <article class="pageversion">
+            {% include 'admin/_article.html.twig' %}
+            <p>{{ article.content }}</p>
+        </article>
+    {% endfor %}
+{% endblock %}
+{% block footer %}
+    <p>Je suis le footer des résultats de recherche</p>
+{% endblock %}
