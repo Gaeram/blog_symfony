@@ -4,9 +4,13 @@ namespace App\Entity;
 
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * @UniqueEntity("title", message="Ce tite existe déja tête de con")
  */
 // Création d'une nouvelle classe au nom de la page
 class Article
@@ -27,6 +31,7 @@ class Article
 
     /**
      * @ORM\Column(type="boolean")
+     * @Assert\IsNull(message="Ton titre tocard")
      */
     private $isPublished;
 

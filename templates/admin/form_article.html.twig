@@ -21,10 +21,13 @@
         <div class="form-group">
             {{ form_label(form.title, 'Titre', {'label_attr': {'class': 'form-article-title-label'}}) }}
             {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.title) }}
         </div>
         <div class="form-group">
             {{ form_label(form.content, 'Contenu', {'label_attr': {'class': 'form-article-content-label'}}) }}
             {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.content) }}
+
         </div>
         <div class="form-group">
             {{ form_label(form.isPublished, 'Publier', {'label_attr': {'class': 'form-article-ispublished-label'}}) }}
@@ -34,11 +37,14 @@
         <div class="form-group">
             {{ form_label(form.category,'Categorie', {'label_attr': {'class': 'form-article-ispublished-label'}}) }}
             {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.category) }}
+
         </div>
 
         <div class="form-group">
             {{ form_label(form.author,'Auteur', {'label_attr': {'class': 'form-article-author-label'}}) }}
             {{ form_widget(form.author, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.author) }}
         </div>
         {{ form_widget(form.submit) }}
     {{ form_end(form) }}

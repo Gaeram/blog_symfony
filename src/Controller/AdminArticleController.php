@@ -136,7 +136,7 @@ class AdminArticleController extends AbstractController
         // des inputs et faire les setter automatiquement sur $category
         $form->handleRequest($request);
 
-        //ici on note que si le contenu du formulaire est envoyé et est conforme
+        // ici on note que si le contenu du formulaire est envoyé et est conforme
         // à ce qui est attendu en BDD, il sera pris en compte
         if($form->isSubmitted() && $form->isValid()){
             $entityManager->persist($article);
