@@ -51,7 +51,12 @@
             {{ form_label(form.image) }}
             {{ form_widget(form.image) }}
             {{ form_errors(form.image) }}
+            {% if article.image %}
+                <img class="article-img" src="{{ asset('uploads/images/'~ article.image) }}" alt="{{ article.title }}">
+            {% endif %}
         </div>
+
+
         {{ form_widget(form.submit) }}
     {{ form_end(form) }}
 
