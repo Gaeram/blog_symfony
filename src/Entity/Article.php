@@ -31,7 +31,6 @@ class Article
 
     /**
      * @ORM\Column(type="boolean")
-     * @Assert\IsNull(message="Ton titre tocard")
      */
     private $isPublished;
 

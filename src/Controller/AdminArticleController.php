@@ -9,12 +9,13 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 
 class AdminArticleController extends AbstractController
 {
     #[Route("/admin/insert-article", name: "admin-insert-article")]
-    public function insertArticle(EntityManagerInterface $entityManager, Request $request){
+    public function insertArticle(EntityManagerInterface $entityManager, Request $request, SluggerInterface $slugger){
         // Création d'un nouveau patron de formulaire avec bin/console make:form
         // Création du Type en le renomant par le nom de l'entité + type
         $article = new Article();
@@ -31,6 +32,25 @@ class AdminArticleController extends AbstractController
         //ici on note que si le contenu du formulaire est envoyé et est conforme
         // à ce qui est attendu en BDD, il sera pris en compte
         if($form->isSubmitted() && $form->isValid()){
+            $image = $form->get('image')->getData();
+
+            // Récup fichier original
+            $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+            // Utilise instance de classe slugger & sa methode slug pour
+            // supprimer les caractères spéciaux
+            $safeFilename = $slugger->slug($originalFilename);
+            // Je rajoute au nom de l'image un, id unique
+            // Au cas ou elle soit upload plusieurs fois
+            $newFilename = $safeFilename.'-'.uniqid().'.'.$image->guessExtension();
+            // Déplace l'image dans le dossier public
+            // en lui assignant en nouveau nom
+            $image->move(
+                $this->getParameter('images_directory'),
+                $newFilename
+            );
+
+            $article->setImage($newFilename);
+
             $entityManager->persist($article);
             $entityManager->flush();
         }
