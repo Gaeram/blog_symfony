@@ -184,7 +184,7 @@ class AdminArticleController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->render('admin/form_article.html.twig', [
+        return $this->render('admin/update.html.twig', [
             'form' => $form->createView(),
             'article' => $article
         ]);
