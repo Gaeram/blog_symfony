@@ -143,7 +143,7 @@ class AdminArticleController extends AbstractController
     }
 
     #[Route("/admin/article/update/{id}", name: "admin-article-update")]
-    public function updateArticle($id, ArticleRepository $articleRepository, EntityManagerInterface $entityManager, Request $request){
+    public function updateArticle($id, ArticleRepository $articleRepository, EntityManagerInterface $entityManager, Request $request, SluggerInterface $slugger){
        $article = $articleRepository->find($id);
 
         // Création du formulaire en recuperant l'instance
@@ -159,12 +159,34 @@ class AdminArticleController extends AbstractController
         // ici on note que si le contenu du formulaire est envoyé et est conforme
         // à ce qui est attendu en BDD, il sera pris en compte
         if($form->isSubmitted() && $form->isValid()){
+            $image = $form->get('image')->getData();
+
+            // Récup fichier original
+            $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+            // Utilise instance de classe slugger & sa methode slug pour
+            // supprimer les caractères spéciaux
+            $safeFilename = $slugger->slug($originalFilename);
+            // Je rajoute au nom de l'image un, id unique
+            // Au cas ou elle soit upload plusieurs fois
+            $newFilename = $safeFilename.'-'.uniqid().'.'.$image->guessExtension();
+            // Déplace l'image dans le dossier public
+            // en lui assignant en nouveau nom
+            $image->move(
+                $this->getParameter('images_directory'),
+                $newFilename
+            );
+
+            $article->setImage($newFilename);
+
+
+
             $entityManager->persist($article);
             $entityManager->flush();
         }
 
         return $this->render('admin/form_article.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'article' => $article
         ]);
 
        /*$article->setTitle("Nouveau titre");
