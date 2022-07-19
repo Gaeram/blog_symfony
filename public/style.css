@@ -1,114 +1,121 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-body {background-color: #5eb5e0;}
+body {
+  background-color: #5eb5e0;
+}
 
-h2 {font-family: "Arial Black";}
+h2 {
+  font-family: "Arial Black";
+}
 
-li {list-style-type: none;}
+li {
+  list-style-type: none;
+}
 
-a {text-decoration: none;}
+a {
+  text-decoration: none;
+}
 
-p {font-family: Arial;}
-
+p {
+  font-family: Arial;
+}
 
 header {
-    width: 100%;
-    height: 8vh;
-    background-color: dodgerblue;
+  width: 100%;
+  height: 8vh;
+  background-color: dodgerblue;
 }
-
 
 ul {
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px ;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
 }
 
-header > nav > ul > li > a{
-    font-family: "Arial Black";
-    color: navy;
-    text-transform: uppercase;
+header > nav > ul > li > a {
+  font-family: "Arial Black";
+  color: navy;
+  text-transform: uppercase;
 }
 
 .homeversion {
-    width: 60%;
-    border: solid blue 1px;
-    border-radius: 5px ;
-    background-color: white;
-    text-align: center;
-    margin: auto;
-    margin-top: 5vh ;
+  width: 60%;
+  border: solid blue 1px;
+  border-radius: 5px;
+  background-color: white;
+  text-align: center;
+  margin: auto;
+  margin-top: 5vh;
 }
 
-.pageversion{
-    width: 80%;
-    border: solid blue 2px;
-    border-radius: 10px;
-    background-color: white;
-    text-align: center;
-    margin: auto;
-    margin-top: 10vh;
-
+.pageversion {
+  width: 80%;
+  border: solid blue 2px;
+  border-radius: 10px;
+  background-color: white;
+  text-align: center;
+  margin: auto;
+  margin-top: 10vh;
 }
 
-.pageversion > img{
-    height: 50%;
-    width: 50%;
+.pageversion > img {
+  height: 50%;
+  width: 50%;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    margin-top: 3vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3vh;
 }
 
 label {
-    font-family: "Arial Black";
+  font-family: "Arial Black";
 }
 
 input {
-    width: 50vh;
-    height: 4vh;
-    border: solid 1px blue;
-    border-radius: 5px;
+  width: 50vh;
+  height: 4vh;
+  border: solid 1px blue;
+  border-radius: 5px;
 }
 
 button {
-    margin-top: 2vh;
-    height: 4vh;
-    width: 10vh
+  margin-top: 2vh;
+  height: 4vh;
+  width: 10vh;
 }
 
-.bouton{
-    display: inline-block;
-    font-family: "Arial Black";
-    text-decoration: none;
-    border: solid 1px navy;
-    border-radius: 3px;
-    background-color: white;
-    color: blue;
-    padding: 10px;
-    margin-left: 87vh;
-    margin-top: 5vh;
+.bouton {
+  display: inline-block;
+  font-family: "Arial Black";
+  text-decoration: none;
+  border: solid 1px navy;
+  border-radius: 3px;
+  background-color: white;
+  color: blue;
+  padding: 10px;
+  margin-left: 87vh;
+  margin-top: 5vh;
 }
 
 .form-group {
-    width: 80vw;
+  width: 80vw;
 }
 
 .bouton:hover {
-    background-color: blue;
-    color: white;
+  background-color: blue;
+  color: white;
 }
 
 footer {
-    text-align: center;
-    margin-bottom: 0;
+  text-align: center;
+  margin-bottom: 0;
 }
 
+/*# sourceMappingURL=style.css.map */
