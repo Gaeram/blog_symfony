@@ -1,0 +1,47 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 3vh;
+}
+
+label {
+  font-family: "Arial Black";
+}
+
+input {
+  width: 50vh;
+  height: 4vh;
+  border: solid 1px $ter-color;
+  border-radius: 5px;
+}
+
+button {
+  margin-top: 2vh;
+  height: 4vh;
+  width: 10vh
+}
+
+.bouton{
+  display: inline-block;
+  font-family: "Arial Black";
+  text-decoration: none;
+  border: solid 1px $fourth-color;
+  border-radius: 3px;
+  background-color: $fifth-color;
+  color: $ter-color;
+  padding: 10px;
+  margin-left: 87vh;
+  margin-top: 5vh;
+}
+
+.form-group {
+  width: 80vw;
+}
+
+.bouton:hover {
+  background-color: $ter-color;
+  color: $fifth-color;
+}
