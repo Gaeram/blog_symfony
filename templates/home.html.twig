@@ -8,7 +8,7 @@
         {% for article in lastArticles %}
         <article class="homeversion">
             {% include 'admin/_article.html.twig' %}
-            <a href="{{ path('admin-article', {'id': article.id}) }}">Lire l'article</a>
+            <a href="{{ path('admin-articles', {'id': article.id}) }}">Lire l'article</a>
         </article>
         {% endfor %}
     {% endblock %}

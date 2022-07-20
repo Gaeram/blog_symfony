@@ -21,7 +21,7 @@ class ArticleType extends AbstractType
             ->add('author')
             ->add('content')
 
-            // Ajout champ category pour article
+            // Ajout champ category pour article.html.twig
             // Ajout entityType pour le lier à une entité
             // Parametre input pour les categories
 

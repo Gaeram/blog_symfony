@@ -1,15 +1,12 @@
-{% extends 'admin/base.html.twig' %}
-    {% block title %}
-        <title>Catégories</title>
-    {% endblock %}
+{% extends "base.html.twig" %}
+{% block title %}
+    <title>Catégories</title>
+{% endblock %}
     {% block main %}
-        <a class="bouton" href="{{ path('admin-insert-category') }}">Ajouter une catégorie</a>
         {% for category in category %}
             <article style="background-color: {{ category.color }}" class="homeversion">
                 <h2>{{ category.title }}</h2>
                 <a href="{{ path('admin-category', {'id': category.id})}}">Clique ici </a>
-                <a href="{{ path('admin-category-delete', {'id': category.id}) }}">Supprimer la catégorie</a>
-                <a href="{{ path('admin-categorie-update', {'id': category.id}) }}">Modifier</a>
             </article>
         {% endfor %}
     {% endblock %}

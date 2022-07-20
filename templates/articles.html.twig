@@ -1,11 +1,11 @@
-{% extends "admin/base.html.twig" %}
+{% extends "base.html.twig" %}
+
 
 {%block title %}
-<title>Articles</title>
+    <title>Articles</title>
 {% endblock %}
 
 {% block main %}
-    <a class="bouton" href="{{ path('admin-insert-article') }}">Ajouter un article</a>
     {% for article in article %}
         {% if article.isPublished %}
             <article class="homeversion">
@@ -17,13 +17,11 @@
                 {% endif %}
                 {%if article.category %}
                     <p>{{ article.category.title }}</p>
-                    {% else %}
+                {% else %}
                     <p>Pas de catégorie</p>
                 {% endif %}
                 {% include "admin/_article.html.twig" %}
                 <a href="{{ path('admin-article', {'id': article.id}) }}">Lire l'article</a>
-                <a href="{{ path('admin-article-delete', {'id': article.id}) }}">Supprimer</a>
-                <a href="{{ path('admin-article-update', {'id': article.id}) }}">Modifier</a>
             </article>
         {% else %}
             <p>Cet article n'est pas encore publié</p>
@@ -34,4 +32,3 @@
 {% block footer %}
     <p>Je suis le footer de la page des articles</p>
 {% endblock %}
-

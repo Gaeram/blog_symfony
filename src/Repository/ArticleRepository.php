@@ -69,13 +69,13 @@ class ArticleRepository extends ServiceEntityRepository
         // recuperation du query builder
         // c'est unn objet qui crée
         // des requetes SQL en PHP
-        $qb = $this->createQueryBuilder('article');
+        $qb = $this->createQueryBuilder('article.html.twig');
 
         // Je l'utilise pour faire un select sur la table articles
-        $query = $qb->select('article')
-            // je récupère les article dont le titre correspond
+        $query = $qb->select('article.html.twig')
+            // je récupère les article.html.twig dont le titre correspond
             // à :search
-            ->where('article.title LIKE :search')
+            ->where('article.html.twig.title LIKE :search')
             // ici je définie la valeur de search
             // En lui diant que le mot
             // Peut contenir des caracteres avant et apres

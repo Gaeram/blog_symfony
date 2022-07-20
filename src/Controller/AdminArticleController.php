@@ -70,25 +70,25 @@ class AdminArticleController extends AbstractController
             !empty($author)
         ){*/
             //Création d'une instance de classe pour les articles(Classe entité)
-            //Celle si servira à inclure mon nouvel article dans la base de données
+            //Celle si servira à inclure mon nouvel article.html.twig dans la base de données
 
 
             // Ici j'utilise mes setters afin de d'attribuer mes données
             // voulues pour le titre, le contenu etc..
-            /*$article->setTitle($title);
-            $article->setContent($content);
-            $article->setIsPublished(true);
-            $article->setAuthor($author);
+            /*$article.html.twig->setTitle($title);
+            $article.html.twig->setContent($content);
+            $article.html.twig->setIsPublished(true);
+            $article.html.twig->setAuthor($author);
 
 
             // La classe entityManagerInterface de doctrine me permets
-            // d'enregisterer mon entité dans la bdd dans la table article.
+            // d'enregisterer mon entité dans la bdd dans la table article.html.twig.
             // en deux étapes avec les fonctions persist & flush.
 
-            $entityManager->persist($article);
+            $entityManager->persist($article.html.twig);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Votre article à bien été ajouté !');
+            $this->addFlash('success', 'Votre article.html.twig à bien été ajouté !');
 
             return $this->redirectToRoute('admin-articles');
         } else {
@@ -101,8 +101,8 @@ class AdminArticleController extends AbstractController
 
     #[Route("/admin/articles", name: "admin-articles")]
     public function showArticle(ArticleRepository $articleRepository){
-        // Recuperer depuis la bdd un article en fonction de son ID
-        // SELECT $ FROM article where id  = xxx
+        // Recuperer depuis la bdd un article.html.twig en fonction de son ID
+        // SELECT $ FROM article.html.twig where id  = xxx
         $article = $articleRepository->findAll();
         // La classe repository me permet de faire des SELECT
         // Dans la table qui y est associée
@@ -133,7 +133,7 @@ class AdminArticleController extends AbstractController
             // Le redirect to route permet de rediriger vers la page précédent la suppression
             // Le Addflash permet d'afficher un message avertissant si l'opération à
             // été menée à bien ou non
-            $this->addFlash('success', 'Votre article à bien été supprimé !');
+            $this->addFlash('success', 'Votre article.html.twig à bien été supprimé !');
         } else {
             $this->addFlash('error', 'Article introuvable !');
         }
@@ -189,9 +189,9 @@ class AdminArticleController extends AbstractController
             'article' => $article
         ]);
 
-       /*$article->setTitle("Nouveau titre");
+       /*$article.html.twig->setTitle("Nouveau titre");
 
-       $entityManager->persist($article);
+       $entityManager->persist($article.html.twig);
        $entityManager->flush();
 
        return $this->redirectToRoute('admin-articles');*/
