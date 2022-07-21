@@ -38,9 +38,9 @@ class AdminAdminController extends AbstractController
             $plainPassword = $form->get('password')->getData();
             // Ici on hash le mdp afin de le rendre sécurisé
             $hashedPassword = $userPasswordHasher->hashPassword($user, $plainPassword);
-            //assignation du mdp hashé à l'utilisateur
+            // assignation du mdp hashé à l'utilisateur
             $user->setPassword($hashedPassword);
-
+            // Ajout de l'user dans la bdd
             $entityManager->persist($user);
             $entityManager->flush();
 
