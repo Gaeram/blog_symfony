@@ -49,6 +49,14 @@ header > nav > ul > li > a {
   color: white;
 }
 
+.night-activated header {
+  background-color: gray;
+}
+
+.night-activated .homeversion {
+  background-color: gray;
+}
+
 .homeversion {
   width: 60%;
   border: solid blue 1px;
