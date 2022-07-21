@@ -31,6 +31,7 @@ class AdminAdminController extends AbstractController
         $user->setRoles(["ROLE_ADMIN"]);
         //Création du formulaire auquel on y place la requete en faisant appel au Type
         $form = $this->createForm(UserType::class, $user);
+        //Prise en compte de la requête dans le formulaire
         $form->handleRequest($request);
         // Récup & hash du mdp
         if ($form->IsSubmitted() && $form->isValid()){
