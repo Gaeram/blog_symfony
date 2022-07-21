@@ -19,6 +19,7 @@ security:
             form_login:
                 # "app_login" is the name of the route created previously
                 login_path: app_login
+                default_target_path: admin-articles
                 check_path: app_login
             logout:
                 path: app_logout
