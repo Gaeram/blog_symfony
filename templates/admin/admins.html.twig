@@ -3,7 +3,7 @@
 {% block main %}
     <section>
         {% for admin in admins %}
-            <article>
+            <article class="homeversion">
                 <h2>{{ admin.email }}</h2>
                 <div>
                     {% for role in admin.roles %}

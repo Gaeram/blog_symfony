@@ -10,7 +10,7 @@
         <title>Blog de la Piscine</title>
     {% endblock %}
 </head>
-<body>
+<body class="js-body">
 <header>
     <p>Bonjour {{ app.user.email }}</p>
     <nav>
@@ -18,10 +18,10 @@
             <li><a href="{{ path('home') }}">Accueil</a></li>
             <li><a href="{{ path('admin-articles') }}">Blog</a></li>
             <li><a href="{{ path('admin-categories') }}">Catégories</a></li>
-            <li><a href="{{ path('app_login') }}">Connexion</a></li>
             <li><a href="{{ path('app_logout') }}">Deconnexion</a></li>
         </ul>
         </nav>
+    <button class="js-night-toggle">Dark Mode</button>
     </header>
 <main>
         {% for message in app.flashes('success') %}
@@ -44,6 +44,6 @@
         <p>Blog de la piscine</p>
     {% endblock %}
 </footer>
-
+<script src="{{ asset('assets/js/main.js') }}"></script>
 </body>
-
+</html>

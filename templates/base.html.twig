@@ -23,6 +23,7 @@
                 <li><a href="{{ path('categories') }}">Catégories</a></li>
             </ul>
         </nav>
+        <button class="js-night-toggle">Dark Mode</button>
     </header>
     <main>
         {% block main %}
@@ -36,6 +37,6 @@
             <p>Blog de la piscine</p>
         {% endblock %}
     </footer>
-
+<script src="{{ asset('assets/js/main.js') }}"></script>
 </body>
-
+</html>
