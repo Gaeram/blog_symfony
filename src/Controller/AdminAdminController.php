@@ -25,18 +25,20 @@ class AdminAdminController extends AbstractController
 
     #[Route('/admin/create', name: 'admin-create-admin')]
     public function createAdmin(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher){
-
+        // Creation nouvel admin
         $user = new User();
+        // Assignation du rôle
         $user->setRoles(["ROLE_ADMIN"]);
-
+        //Création du formulaire auquel on y place la requete en faisant appel au Type
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
-
+        // Récup & hash du mdp
         if ($form->IsSubmitted() && $form->isValid()){
-
+            // Ici on le récupère à l'état original (le mdp hein)
             $plainPassword = $form->get('password')->getData();
+            // Ici on hash le mdp afin de le rendre sécurisé
             $hashedPassword = $userPasswordHasher->hashPassword($user, $plainPassword);
-
+            //assignation du mdp hashé à l'utilisateur
             $user->setPassword($hashedPassword);
 
             $entityManager->persist($user);
