@@ -22,3 +22,15 @@ nightToggle.addEventListener('click',function () {
         localStorage.setItem('nightActivated', 'true');
     }
 });
+
+// Menu Burger
+
+const burger = document.querySelector('.nav-toggler');
+const navig = document.querySelector("nav");
+
+burger.addEventListener("click", toggleNav)
+
+function toggleNav(){
+    burger.classList.toggle("active")
+    navig.classList.toggle("active")
+}

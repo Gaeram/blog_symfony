@@ -1,3 +1,71 @@
+@media screen and (max-width: 640px) {
+  .desktop-menu {
+    display: none;
+  }
+  .nav-toggler {
+    position: fixed;
+    z-index: 10;
+    top: 30px;
+    right: 30px;
+    height: 50px;
+    width: 50px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+  }
+  nav {
+    position: fixed;
+    width: 50vw;
+    min-height: 100vh;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: dodgerblue;
+    border-left: 1px solid #cfcfcf;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.73, 0.11, 0.67, 0.84);
+  }
+  nav.active {
+    transform: translate(0);
+  }
+  nav a {
+    font-family: Quicksand, sans-serif;
+    color: #f1f1f1;
+    font-size: 20px;
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+  }
+  .line {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #5eb5e0;
+    transition: transform 0.3s ease-out, opacity 0.1s ease-out;
+  }
+  .l1 {
+    transform: translateY(-10px);
+  }
+  .l3 {
+    transform: translateY(10px);
+  }
+  .nav-toggler.active .l1 {
+    transform: translateY(0px) rotate(135deg);
+  }
+  .nav-toggler.active .l2 {
+    opacity: 0;
+  }
+  .nav-toggler.active .l3 {
+    transform: translateY(0px) rotate(-135deg);
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -55,6 +123,94 @@ header > nav > ul > li > a {
 
 .night-activated .homeversion {
   background-color: gray;
+}
+
+.night-activated nav {
+  background-color: black;
+}
+
+.desktop-menu {
+  display: none;
+}
+
+.nav-toggler {
+  position: fixed;
+  z-index: 10;
+  top: 30px;
+  right: 30px;
+  height: 50px;
+  width: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+nav {
+  position: fixed;
+  width: 50vw;
+  min-height: 100vh;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: dodgerblue;
+  border-left: 1px solid #cfcfcf;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.73, 0.11, 0.67, 0.84);
+}
+
+nav.active {
+  transform: translate(0);
+}
+
+nav a {
+  font-family: Quicksand, sans-serif;
+  color: #f1f1f1;
+  font-size: 20px;
+  display: block;
+  margin: 10px 0;
+  text-decoration: none;
+}
+
+.line {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #5eb5e0;
+  transition: transform 0.3s ease-out, opacity 0.1s ease-out;
+}
+
+.l1 {
+  transform: translateY(-10px);
+}
+
+.l3 {
+  transform: translateY(10px);
+}
+
+.nav-toggler.active .l1 {
+  transform: translateY(0px) rotate(135deg);
+}
+
+.nav-toggler.active .l2 {
+  opacity: 0;
+}
+
+.nav-toggler.active .l3 {
+  transform: translateY(0px) rotate(-135deg);
+}
+
+.flexible {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .homeversion {
