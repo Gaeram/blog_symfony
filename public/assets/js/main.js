@@ -25,9 +25,11 @@ nightToggle.addEventListener('click',function () {
 
 // Menu Burger
 
+// je créée mes constantes afin de pouvoir assigner les classes CSS
 const burger = document.querySelector('.nav-toggler');
 const navig = document.querySelector("nav");
 
+// J'écoute le clique pui execute
 burger.addEventListener("click", toggleNav)
 
 function toggleNav(){
