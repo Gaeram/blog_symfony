@@ -8,7 +8,7 @@ if(localStorage.getItem('nightActivated') === 'true'){
 }
 const nightToggle = document.querySelector('.js-night-toggle')
 // fonction réagissant à l'évenement clic
-// le dark mode s'applique seulement quand un 
+// le dark mode s'applique seulement quand un un clic sur le bouton est exécuté
 nightToggle.addEventListener('click',function () {
     // si le dark mode est activé, je le désactive
     if (body.classList.contains('night-activated')) {
