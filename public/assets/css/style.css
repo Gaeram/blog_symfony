@@ -151,7 +151,7 @@ header > nav > ul > li > a {
 
 nav {
   position: fixed;
-  width: 25vw;
+  width: 50vw;
   min-height: 100vh;
   right: 0;
   display: flex;
