@@ -29,9 +29,10 @@ nightToggle.addEventListener('click',function () {
 const burger = document.querySelector('.nav-toggler');
 const navig = document.querySelector("nav");
 
-// J'écoute le clique pui execute
+// J'écoute le clique puis execute la fonction
 burger.addEventListener("click", toggleNav)
-
+// qui rajoute la classe active à nav-toggler ce qui
+// permet son affichage
 function toggleNav(){
     burger.classList.toggle("active")
     navig.classList.toggle("active")
